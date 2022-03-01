@@ -1,0 +1,71 @@
+from tkinter import *
+llst = ['а', 'б', 'в', 'г', 'д', 'е', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х',
+        'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я']
+blst = ['г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о ',
+        'п', 'р', 'с ', 'т', 'у', 'ф', 'х ', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я', 'а', 'б', 'в']
+
+
+def coding(shift=3):
+    x = el.get()
+    if x not in llst:
+        l3.config(text="Нет такого(их) символа(ов)")
+    else:
+        ind = llst.index(x) + shift
+        if ind > 32:
+            cods = llst[ind - 33]
+            l3.config(text="Результат-" + cods)
+        else:
+            cods = llst[ind]
+            l3.config(text="результат-" + cods)
+
+
+def uncoding(shift=3):
+    x = el1.get()
+    if x not in blst:
+        l31.config(text="Нет такого(их) символа(ов)")
+    else:
+        ind = blst.index(x) - shift
+        if ind > 32:
+            cods = blst[ind - 33]
+            l31.config(text="Результат-" + cods)
+        else:
+            cods = blst[ind]
+
+        l31.config(text="Результат-" + cods)
+
+
+root = Tk()
+root.geometry('500x300')
+root.title("")
+
+ll = Label(root, text="Шифр Цезаря", fg="black")
+ll.place(x=40, y=0)
+
+l2 = Label(root, text="Введите символы ", fg="black")
+l2.place(x=0, y=30)
+
+el = Entry(root, width=50)
+el.place(x=100, y=30)
+
+l3 = Label(root, text="Результат:", fg="blue")
+l3.place(x=0, y=60)
+
+b1 = Button(root, text="Закодировать", command=coding)
+b1.place(x=60, y=90)
+
+ll1 = Label(root, text="Дешифрование", fg="black")
+ll1.place(x=150, y=150)
+
+l21 = Label(root, text="Введите символы ", fg="black")
+l21.place(x=0, y=180)
+
+el1 = Entry(root, width=50)
+el1.place(x=100, y=180)
+
+l31 = Label(root, text="Результат:", fg="blue")
+l31.place(x=0, y=210)
+
+b11 = Button(root, text="Дешифровать", command=uncoding)
+b11.place(x=60, y=240)
+
+root.mainloop()
