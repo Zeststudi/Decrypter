@@ -1,0 +1,28 @@
+def encode():
+    e=StringVar()
+    b=' '
+    a=str(ent1.get())
+    key=int(ent2.get())
+    a=a.upper()
+    for letter in a:
+        if(letter !=' '):
+            e = ((ord(letter))+key)
+            e = (e-65)%26+65
+            e = chr(e)
+            b +=" ".join(e)
+    ent3.insert(0,b)
+from tkinter import*
+root=Tk()
+root.title('Шифр Цезаря')
+lab1=Label(root,text='Сообщение').grid(row=1,column=1)
+lab2=Label(root,text='Шаг шифровки').grid(row=2,column=1)
+lab3=Label(root,text='Зашифрованное сообщение').grid(row=3,column=1)
+ent1=Entry(root)
+ent1.grid(row=1,column=2)
+ent2=Entry(root)
+ent2.grid(row=2,column=2)
+ent3=Entry(root)
+ent3.grid(row=3,column=2)
+but1=Button(root,text='Закодировать',command=encode)
+but1.grid(row=1,column=3)
+root.mainloop()
